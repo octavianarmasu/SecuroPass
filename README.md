@@ -1,7 +1,7 @@
 # Password Checker - "SecuroPass"
 
 ## Introduction
-"SecuroPass" is a simple Python program designed to help users check the strength of their passwords. It ensures password confidentiality by not displaying the input characters during entry.
+"SecuroPass" is a simple Python program with GUI designed to help users check the strength of their passwords. It ensures password confidentiality by not displaying the input characters during entry.
 
 ## Usage
 To run the program, execute the `pass.py` script. Upon execution, the program prompts the user to input a password. The password input is kept secret, ensuring privacy. After the initial input, the user is prompted to re-enter the password. If the two inputs match, the program evaluates the strength of the password and provides feedback. If not, the user is prompted to re-enter both passwords until they match.
