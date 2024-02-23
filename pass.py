@@ -60,12 +60,13 @@ def passStrength(n):
 
 def checkPasswords():
     if password.get() == password2.get():
+        error_message.config(text="", fg="white")
         requirementsMet = sum(
             value for value in passCheck(password.get()).values())
         password_strength = passStrength(requirementsMet)
         messagebox.showinfo("Password Check: ", password_strength)
     else:
-        feedback_label.config(text="Passwords do not match!", fg="red")
+        error_message.config(text="Passwords do not match!", fg="red")
         password.delete(0, tk.END)
         password2.delete(0, tk.END)
 
@@ -95,8 +96,8 @@ reenter_password_label.pack()
 password2 = tk.Entry(app, show="*")
 password2.pack()
 
-feedback_label = tk.Label(app, text="", bg="white")
-feedback_label.pack(pady=(5, 0))
+error_message = tk.Label(app, text="", bg="white")
+error_message.pack(pady=(5, 0))
 
 check_button = tk.Button(app, text="Check Password", command=checkPasswords)
 check_button.pack(pady=(10, 0))
