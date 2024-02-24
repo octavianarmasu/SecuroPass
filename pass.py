@@ -1,17 +1,5 @@
-import getpass
 import tkinter as tk
-from tkinter import messagebox
-
-
-def readPass():
-    password = getpass.getpass("Enter your password: ")
-    # secret password
-    return password
-
-
-def reenterPass():
-    password = getpass.getpass("Re-enter your password: ")
-    return password
+import tkinter.font as tkFont
 
 
 def isDigit(letter):
@@ -64,7 +52,7 @@ def checkPasswords():
         requirementsMet = sum(
             value for value in passCheck(password.get()).values())
         password_strength = passStrength(requirementsMet)
-        messagebox.showinfo("Password Check: ", password_strength)
+        strength_message.config(text=password_strength, fg="blue")
     else:
         error_message.config(text="Passwords do not match!", fg="red")
         password.delete(0, tk.END)
@@ -98,6 +86,10 @@ password2.pack()
 
 error_message = tk.Label(app, text="", bg="white")
 error_message.pack(pady=(5, 0))
+
+feedback_font = tkFont.Font(size=14, weight="bold")
+strength_message = tk.Label(app, text="", bg="white", font=feedback_font)
+strength_message.pack(pady=(5, 0))
 
 check_button = tk.Button(app, text="Check Password", command=checkPasswords)
 check_button.pack(pady=(10, 0))
