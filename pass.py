@@ -1,5 +1,6 @@
 import tkinter as tk
 import tkinter.font as tkFont
+import crack_time as ck
 
 
 def isDigit(letter):
@@ -35,15 +36,15 @@ def passCheck(password):
 def passStrength(n):
     # printing the strength of the password
     if n == 1:
-        return "very weak password!"
+        return "Very weak password!"
     elif n == 2:
-        return "weak password!"
+        return "Weak password!"
     elif n == 3:
-        return "decent password!"
+        return "Decent password!"
     elif n == 4:
-        return "strong password!"
+        return "Strong password!"
     elif n == 5:
-        return "very strong password!"
+        return "Very strong password!"
 
 
 def checkPasswords():
@@ -52,7 +53,10 @@ def checkPasswords():
         requirementsMet = sum(
             value for value in passCheck(password.get()).values())
         password_strength = passStrength(requirementsMet)
+        crack_message = ck.print_time(password.get())
         strength_message.config(text=password_strength, fg="blue")
+        crack.config(text=crack_message, fg="green")
+
     else:
         error_message.config(text="Passwords do not match!", fg="red")
         password.delete(0, tk.END)
@@ -84,12 +88,17 @@ reenter_password_label.pack()
 password2 = tk.Entry(app, show="*")
 password2.pack()
 
-error_message = tk.Label(app, text="", bg="white")
+feedback_font = tkFont.Font(size=14, weight="bold")
+
+error_message = tk.Label(app, text="", bg="white", font=feedback_font)
 error_message.pack(pady=(5, 0))
 
-feedback_font = tkFont.Font(size=14, weight="bold")
 strength_message = tk.Label(app, text="", bg="white", font=feedback_font)
 strength_message.pack(pady=(5, 0))
+
+crack_font = tkFont.Font(size=12)
+crack = tk.Label(app, text="", bg="white", font=crack_font)
+crack.pack(pady=(5, 1))
 
 check_button = tk.Button(app, text="Check Password", command=checkPasswords)
 check_button.pack(pady=(10, 0))

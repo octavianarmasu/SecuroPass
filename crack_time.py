@@ -30,6 +30,6 @@ def estimate_time(password):
     return f"{int(days)} days, {int(hours)} hours, {int(minutes)} minutes, {int(seconds)} seconds"
 
 
-password = input("Enter: ")
-time = estimate_time(password)
-print("Estimate time to crack the password is:", estimate_time(password))
+def print_time(password):
+    estimated_time_str = estimate_time(password)
+    return "Estimate time to crack the password is: " + str(estimated_time_str)
