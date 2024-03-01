@@ -1,7 +1,7 @@
 
 def estimate_time(password):
     # Can change the value of the guesses
-    guesses = 10 ** 15
+    guesses = 10 ** 18
     # Character sets: lowercase, uppercase, digits, and special characters
     char_sets = {
         'lowercase': 26,
@@ -19,15 +19,17 @@ def estimate_time(password):
         size for set_name, size in char_sets.items() if sets_used[set_name])
     combinations = total_char_set_size ** len(password)
     time = combinations / guesses
+    years = time // (24 * 3600 * 365)
+    time %= 24 * 3600 * 365
     days = time // (24 * 3600)
     time = time % (24 * 3600)
     hours = time // 3600
     time %= 3600
     minutes = time // 60
     seconds = time % 60
-    if int(days) == 0 and int(hours) == 0 and int(minutes) == 0 and int(seconds) == 0:
+    if int(years) and int(days) == 0 and int(hours) == 0 and int(minutes) == 0 and int(seconds) == 0:
         seconds = 1
-    return f"{int(days)} days, {int(hours)} hours, {int(minutes)} minutes, {int(seconds)} seconds"
+    return f"{int(years)} years, {int(days)} days, {int(hours)} hours, {int(minutes)} minutes, {int(seconds)} seconds"
 
 
 def print_time(password):
