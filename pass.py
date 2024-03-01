@@ -58,6 +58,8 @@ def checkPasswords():
         crack.config(text=crack_message, fg="green")
 
     else:
+        strength_message.config(text="", fg="white")
+        crack.config(text="", fg="white")
         error_message.config(text="Passwords do not match!", fg="red")
         password.delete(0, tk.END)
         password2.delete(0, tk.END)
